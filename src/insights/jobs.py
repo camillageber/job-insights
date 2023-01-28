@@ -19,9 +19,9 @@ def read(path: str) -> List[Dict]:
     """
 
     with open(path) as file:
-        list_of_jobs = list(csv.DictReader(file))
+        reader_list = list(csv.DictReader(file))
 
-    return list_of_jobs
+    return reader_list
 
 
 def get_unique_job_types(path: str) -> List[str]:
@@ -40,7 +40,7 @@ def get_unique_job_types(path: str) -> List[str]:
         List of unique job types
     """
     jobs = read(path)
-    list_of_types = list([job["job_type"] for job in jobs])
+    list_of_types = list([job["job_type"] for job in jobs if job["job_type"]])
     return set(list_of_types)
 
 
